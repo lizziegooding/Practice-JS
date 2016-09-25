@@ -22,10 +22,10 @@ var fibDiv3 = fibBy3(5);
 What is the sum of the prime numbers whose positions in the list of prime numbers
 are those five numbers from the Fibonacci sequence?
 
-1. Generate a list of prime numbers up to length of last element in fibBy3 array - 1
-1a. Develop a function that tests whether or not a number is prime
-1b.
-2. Sum the prime numbers with indices - 1 from the Fibonacci sequence*/
+1. Generate a list of prime numbers up to length of last element in fibDiv3 array
+1a. Make a function that tests whether or not a number is prime
+1b. Make a function that loops through all odd numbers, test using the prime test from previous function, and adds those numbers to an array
+2. Sum the prime numbers with positions (index + 1) from the Fibonacci sequence*/
 
 //From stack overflow: http://stackoverflow.com/questions/21966000/need-to-generate-prime-numbers-in-java-script
 function isPrime(num) {
@@ -44,18 +44,17 @@ function makePrime(len) {
       primeArray.push(ii);
     }
   }
-  // console.log(primeArray);
   return primeArray;
 }
 
-var myPrimes = makePrime(fibDiv3[fibDiv3.length - 1]);
+var primeArray = makePrime(fibDiv3[fibDiv3.length - 1]);
 
 function solve(fibs, primes){
   var solution = 0;
   for (var ii in fibs){
-    solution += primes[fibs[ii] - 1];
+    solution += primes[fibs[ii] + 1];
   }
   return solution;
 }
 
-console.log(solve(fibDiv3, myPrimes));
+solve(fibDiv3, primeArray);
