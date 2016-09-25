@@ -25,7 +25,7 @@ are those five numbers from the Fibonacci sequence?
 1. Generate a list of prime numbers up to length of last element in fibBy3 array - 1
 1a. Develop a function that tests whether or not a number is prime
 1b.
-2. Sum the prime numbers with indices from the Fibonacci sequence*/
+2. Sum the prime numbers with indices - 1 from the Fibonacci sequence*/
 
 //From stack overflow: http://stackoverflow.com/questions/21966000/need-to-generate-prime-numbers-in-java-script
 function isPrime(num) {
@@ -37,14 +37,25 @@ function isPrime(num) {
   return true;
 }
 
-function makePrime(limit) {
+function makePrime(len) {
   var primeArray = [1, 2];
-  for (var ii = 3; ii < limit; ii += 2) {
+  for (var ii = 3; primeArray.length < len; ii += 2) {
     if (isPrime(ii)) {
       primeArray.push(ii);
     }
   }
-  console.log(primeArray);
+  // console.log(primeArray);
+  return primeArray;
 }
 
-makePrime(100);
+var myPrimes = makePrime(fibDiv3[fibDiv3.length - 1]);
+
+function solve(fibs, primes){
+  var solution = 0;
+  for (var ii in fibs){
+    solution += primes[fibs[ii] - 1];
+  }
+  return solution;
+}
+
+console.log(solve(fibDiv3, myPrimes));
