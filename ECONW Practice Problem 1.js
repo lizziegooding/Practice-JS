@@ -8,17 +8,16 @@ are those five numbers from the Fibonacci sequence?*/
 //2. Use conditionals to check if the current fibonachi number is divisible by 3
 //3. Add that number to an array
 
-function fibBy3(){
-  // index0 = 0;
-  // index1 = 1;
-  fibs = [0, 1];
-  answer = [];
-  while (answer.length < 5){
-    for (i in fibs){
-      fibs.push(fibs[:2] + fibs[:1]);
-      if (fibs[:1] % 3 === 0){
-        answer.push(fibs[:1]);
-      }
+function fibBy3(len){
+  var fibs = [0, 1];
+  var fibDiv3 = [];
+  while (fibDiv3.length < len){
+    fibs.push(fibs[fibs.length - 1] + fibs[fibs.length - 2]);
+    if (fibs[fibs.length - 1] % 3 === 0){
+      fibDiv3.push(fibs[fibs.length - 1]);
     }
   }
+  return fibDiv3;
 }
+
+fibBy3(5);
