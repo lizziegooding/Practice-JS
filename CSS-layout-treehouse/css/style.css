@@ -1,0 +1,203 @@
+/* =================================
+  Base Element Styles
+==================================== */
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Varela Round', sans-serif;
+	line-height: 1.6;
+	color: #3a3a3a;
+}
+
+p {
+	font-size: .95em;
+	margin-bottom: 1.8em;
+}
+
+h2,
+h3,
+a {
+	color: #093a58;
+}
+
+h2,
+h3 {
+	margin-top: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+img {
+	max-width: 100%;
+}
+
+/* =================================
+  Base Layout Styles
+==================================== */
+
+/* ---- Navigation ---- */
+
+.name {
+	font-size: 1.25em;
+	/*Prevents default margins and element collapse behavior*/
+	margin: 0;
+}
+
+.main-nav {
+	/*Gives main-nav separation from site name above*/
+	margin-top: 5px;
+}
+
+.name a,
+.main-nav a {
+	text-align: center;
+	display: block;
+	/*Makes hover targets taller and wider so links are easier to click*/
+	padding: 10px 15px;
+}
+
+.main-nav a {
+	font-size: .95em;
+	color: #3acec2;
+	text-transform: uppercase;
+  width: 100%;
+}
+
+.main-nav a:hover {
+	color: #093a58;
+}
+
+
+/* ---- Layout Containers ---- */
+
+.main-header {
+	padding-top: .5em;
+	padding-bottom: .5em;
+}
+
+/*Center content in these sections*/
+.banner, .main-footer {
+	text-align: center;
+}
+
+.banner {
+	color: #fff;
+	background: #3acec2;
+	/*Add space around banner content*/
+	padding: 3.2em 0;
+	/*Add space between banner div and content columns below*/
+	margin-bottom: 60px;
+}
+
+/*Creates separation between content and edge of screen*/
+.col {
+	padding-right: 1em;
+	padding-left: 1em;
+}
+
+.main-footer {
+	background: #d9e4ea;
+	padding: 2em 0;
+	margin-top: 30px;
+}
+
+/* ---- Page Elements ---- */
+
+.logo {
+	width: 190px;
+}
+
+.headline {
+	/*Decreases space between headline and tagline below*/
+	margin-bottom: 0px;
+}
+
+/* =================================
+  Media Queries
+==================================== */
+
+@media (min-width: 769px) {
+
+	/*Move all non-fixed content down to compensate for space now occupied by the header*/
+	body {
+		padding-top: 68px;
+	}
+
+	/*Create a fixed header element*/
+	.main-header {
+		position: fixed;
+		background: #fff;
+		box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+		/*Stretch header to full width of viewport*/
+		width: 100%;
+		/*Makes header fixed when user scrolls; don't have "bounce" when top is reached*/
+		top: 0;
+	}
+
+	/*Contain non-banner elements; around three columns, and content of header and banner sections
+	Center layout on page; prevent content from looking too wide or narrow*/
+	.container {
+	  width: 90%;
+		/*Centers content in container*/
+	  margin: 0 auto;
+	}
+
+	/*Could have also used inline block rather than float here*/
+	.name,
+	.col {
+	  float: left;
+	}
+
+	/*Purposely not giving tertiary column a width yet so it will appear below primary and secondary at this screen width*/
+	.primary,
+	.secondary {
+		width: 50%;
+	}
+
+	.main-nav {
+	  float: right;
+	}
+
+	.main-nav li {
+		/*Display lis on same line and create separation between each*/
+	  display: inline-block;
+	  margin-left: 15px;
+	}
+
+	.tagline {
+		/*Increase tagline font size in larger screens*/
+		font-size: 1.4em;
+	}
+
+	/* ---- Float clearfix ---- */
+	/*Apply to containers of floated elements (will collapse without this class)*/
+	.clearfix::after {
+		content: " ";
+		display: table;
+		clear: both;
+	}
+
+}
+
+@media (min-width: 1025px) {
+
+	/*Leave more white space around screen left and right edges*/
+	.container {
+		width: 80%;
+		max-width: 1150px;
+	}
+
+	.primary {
+		width: 40%;
+	}
+
+	.secondary,
+	.tertiary {
+		width: 30%;
+	}
+}
