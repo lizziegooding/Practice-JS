@@ -1,10 +1,9 @@
-/* ================================= 
+/* =================================
   Base Element Styles
 ==================================== */
 
 * {
 	box-sizing: border-box;
-  
 }
 
 body {
@@ -37,34 +36,32 @@ img {
 	max-width: 100%;
 }
 
-/* ================================= 
+/* =================================
   Base Layout Styles
 ==================================== */
 
 /* ---- Navigation ---- */
 
-.main-header, .banner , .main-footer {
-  text-align: center;
-  padding: 1em;
-}
-
-.main-nav li {
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-}
-
-.col {
-  padding: 1em;
-}
+/*Contain non-banner elements; around three columns, and content of header and banner sections
+Center layout on page; prevent content from looking too wide or narrow*/
 
 .name {
 	font-size: 1.25em;
+	/*Prevents default margins and element collapse behavior*/
+	margin: 0;
+}
+
+.main-nav {
+	/*Gives main-nav separation from site name above*/
+	margin-top: 5px;
 }
 
 .name a,
 .main-nav a {
 	text-align: center;
-  width: 100%;
+	display: block;
+	/*Makes hover targets taller and wider so links are easier to click*/
+	padding: 10px 15px;
 }
 
 .main-nav a {
@@ -80,10 +77,30 @@ img {
 
 
 /* ---- Layout Containers ---- */
-  
+
+.main-header {
+	padding-top: .5em;
+	padding-bottom: .5em;
+}
+
+/*Center content in these sections*/
+.banner, .main-footer {
+	text-align: center;
+}
+
 .banner {
 	color: #fff;
 	background: #3acec2;
+	/*Add space around banner content*/
+	padding: 3.2em 0;
+	/*Add space between banner div and content columns below*/
+	margin-bottom: 60px;
+}
+
+/*Creates separation between content and edge of screen*/
+.col {
+	padding-right: 1em;
+	padding-left: 1em;
 }
 
 .main-footer {
@@ -98,11 +115,42 @@ img {
 	width: 190px;
 }
 
-/* ================================= 
+.headline {
+	/*Decreases space between headline and tagline below*/
+	margin-bottom: 0px;
+}
+
+/* =================================
   Media Queries
 ==================================== */
 
 @media (min-width: 769px) {
+
+	.container {
+	  width: 90%;
+		/*Centers content in container*/
+	  margin: 0 auto;
+	}
+
+/*Could have also used inline block rather than float here*/
+	.name {
+	  float: left;
+	}
+
+	.main-nav {
+	  float: right;
+	}
+
+	.main-nav li {
+		/*Display lis on same line and create separation between each*/
+	  display: inline-block;
+	  margin-left: 15px;
+	}
+
+	.tagline {
+		/*Increase tagline font size in larger screens*/
+		font-size: 1.4em;
+	}
 
 .primary, .secondary {
   width: 40%;
@@ -111,29 +159,8 @@ img {
 
 
 
-.container {
-  width: 90%;
-  margin: 0 auto;
-  max-width: 1150px;
-}
-
-.main-nav li {
-  display: inline-block;
-  padding-left: 1em;
-}
-
-.main-nav {
-  vertical-align: center;
-  display: inline-block;
-}
-
 .main-header {
   text-align: left;
-}
-  
-
-.name {
-  display: inline-block;
 }
 
 	/* ---- Float clearfix ---- */
@@ -153,7 +180,6 @@ img {
   display: inline-block;
   margin-right: -4px;
   vertical-align: top;
-  
-}
+	}
 
 }
