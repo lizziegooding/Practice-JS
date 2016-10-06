@@ -42,9 +42,6 @@ img {
 
 /* ---- Navigation ---- */
 
-/*Contain non-banner elements; around three columns, and content of header and banner sections
-Center layout on page; prevent content from looking too wide or narrow*/
-
 .name {
 	font-size: 1.25em;
 	/*Prevents default margins and element collapse behavior*/
@@ -126,15 +123,24 @@ Center layout on page; prevent content from looking too wide or narrow*/
 
 @media (min-width: 769px) {
 
+	/*Contain non-banner elements; around three columns, and content of header and banner sections
+	Center layout on page; prevent content from looking too wide or narrow*/
 	.container {
 	  width: 90%;
 		/*Centers content in container*/
 	  margin: 0 auto;
 	}
 
-/*Could have also used inline block rather than float here*/
-	.name {
+	/*Could have also used inline block rather than float here*/
+	.name,
+	.col {
 	  float: left;
+	}
+
+	/*Purposely not giving tertiary column a width yet so it will appear below primary and secondary at this screen width*/
+	.primary,
+	.secondary {
+		width: 50%;
 	}
 
 	.main-nav {
@@ -152,19 +158,8 @@ Center layout on page; prevent content from looking too wide or narrow*/
 		font-size: 1.4em;
 	}
 
-.primary, .secondary {
-  width: 40%;
-  margin: -4px;
-}
-
-
-
-.main-header {
-  text-align: left;
-}
-
 	/* ---- Float clearfix ---- */
-
+	/*Apply to containers of floated elements (will collapse without this class)*/
 	.clearfix::after {
 		content: " ";
 		display: table;
@@ -173,13 +168,20 @@ Center layout on page; prevent content from looking too wide or narrow*/
 
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1025px) {
 
-.col {
-  width: 33.3%;
-  display: inline-block;
-  margin-right: -4px;
-  vertical-align: top;
+	/*Leave more white space around screen left and right edges*/
+	.container {
+		width: 80%;
+		max-width: 1150px;
 	}
 
+	.primary {
+		width: 40%;
+	}
+
+	.secondary,
+	.tertiary {
+		width: 30%;
+	}
 }
