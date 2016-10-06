@@ -123,6 +123,22 @@ img {
 
 @media (min-width: 769px) {
 
+	/*Move all non-fixed content down to compensate for space now occupied by the header*/
+	body {
+		padding-top: 68px;
+	}
+
+	/*Create a fixed header element*/
+	.main-header {
+		position: fixed;
+		background: #fff;
+		box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+		/*Stretch header to full width of viewport*/
+		width: 100%;
+		/*Makes header fixed when user scrolls; don't have "bounce" when top is reached*/
+		top: 0;
+	}
+
 	/*Contain non-banner elements; around three columns, and content of header and banner sections
 	Center layout on page; prevent content from looking too wide or narrow*/
 	.container {
