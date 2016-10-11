@@ -176,7 +176,7 @@ directions.on('route', function(e) {
 
   //Write distance to DOM
   network = e.route[0].distance;
-  networkH1.append(network + ' meters');
+  networkH1.append((network / 1000) + ' km');
   euclidean = turf.lineDistance(eucLine);
-  euclideanH1.append(euclidean + ' meters');
+  euclideanH1.append(euclidean + ' km');
 });
