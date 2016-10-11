@@ -50,6 +50,8 @@ var directions = new mapboxgl.Directions({
 map.on('load', function() {
   directions.setOrigin('Portland, Oregon'); // On load, set the origin to 'Toronto, Ontario'.
   directions.setDestination('Beaverton, Oregon'); // On load, set the destination to 'Montreal, Quebec'.
+
+  // Add geojson data
   map.addSource('geojson', {
     'type': 'geojson',
     'data': geojson
@@ -136,6 +138,15 @@ map.on('load', function() {
 directions.on('route', function(e) {
   // Logs the current route shown in the interface.
   console.log(e.route);
+
+  //Write distance to DOM
   network = e.route[0].distance;
   networkH1.append(network + ' meters');
+
+  //Returns geojson object of origin point
+  console.log(directions.getOrigin());
+
+  //Returns geojson object of destination point
+  console.log(directions.getDestination());
+
 });
