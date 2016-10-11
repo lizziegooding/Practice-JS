@@ -145,25 +145,25 @@ directions.on('route', function(e) {
   //Returns geojson object of destination point
   var destination = directions.getDestination();
 
-  map.addSource('route', {
-    'type': 'geojson',
-    'data': {
-      'type': 'Feature',
-      'properties': {},
-      'geometry': {
-        'type': 'LineString',
-        'coordinates': [
-          origin.geometry.coordinates,
-          destination.geometry.coordinates
-        ]
-      }
+  var eucLine = {
+    'type': 'Feature',
+    'geometry': {
+      'type': 'LineString',
+      'coordinates': [
+        origin.geometry.coordinates,
+        destination.geometry.coordinates
+      ]
     }
+  };
+  map.addSource('eucLine',{
+    'type': 'geojson',
+    'data': eucLine
   });
 
   map.addLayer({
-    'id': 'route',
+    'id': 'eucLine',
     'type': 'line',
-    'source': 'route',
+    'source': 'eucLine',
     'layout': {
       'line-join': 'round',
       'line-cap': 'round'
@@ -177,5 +177,6 @@ directions.on('route', function(e) {
   //Write distance to DOM
   network = e.route[0].distance;
   networkH1.append(network + ' meters');
-
+  euclidean = turf.lineDistance(eucLine);
+  euclideanH1.append(euclidean + ' meters');
 });
