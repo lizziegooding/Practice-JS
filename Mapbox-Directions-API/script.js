@@ -1,6 +1,6 @@
-// Sandbox for Mapbox Distance API
+// Sandbox for Mapbox Directions API
 
-  // Personal access token
+// Personal access token
 mapboxgl.accessToken = 'pk.eyJ1IjoibGl6emllZ29vZGluZyIsImEiOiJjaW92cmc1NHYwMWJsdW9tOHowdTA2cnFsIn0.lFq-Wju99kZ_dR_2TMBYCQ';
 
 var euclidean;
@@ -8,15 +8,16 @@ var network;
 var displayNetwork = $('#output h1:nth-child(1)');
 var displayEuclidean = $('#output h1:nth-child(2)');
 
-//Add a new Mapbox GL Map object
+//Create a new Mapbox GL Map object
 var map = new mapboxgl.Map({
   // Place inside #map div
   container: 'map',
-  // Use streets basemap
+  // Style location: use streets basemap
   style: 'mapbox://styles/mapbox/streets-v9',
-  // Center on Portland, OR
+  // Starting position: Center on Portland, OR
+    //Note that coordinates are specified as [longitude, latitude]
   center: [-122.6765, 45.5231],
-  //Zoom 10 to see full city
+  //Starting zoom
   zoom: 10
 });
 
@@ -39,6 +40,7 @@ var eucLine = {
   }
 };
 
+//Give page elements and asynchronous remote resources time to load
 map.on('load', function() {
   // On load, set the origin to 'Portland, Oregon'
   directions.setOrigin('Portland, Oregon');
